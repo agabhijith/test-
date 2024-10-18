@@ -1,0 +1,6 @@
+number1 = int(input("enter the first number:"))
+number2 = int(input ("enter the second number:"))
+print ("sum=",number1+number2,",divison=",number1/number2)
+print("is number1 greater 1 and than number2?:",number1>number2)
+print("are number 1 and number 2 equal?:",number1==number2)
+print("Logical AND:",number1>0 and number2>0)
