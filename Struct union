@@ -18,3 +18,4 @@ int main()
  printf("\n The size_of_union is:%d",size_of_union);
  return 0;
 }
+ 
