@@ -1,0 +1,74 @@
+#include <stdio.h>
+
+
+struct poly {
+    int coef;  
+    int expo;  
+};
+
+int main() {
+    int term1, term2, i, j, k;
+
+   
+    struct poly p1[10], p2[10], p3[20]; 
+
+  
+    printf("Enter the number of terms in first polynomial: ");
+    scanf("%d", &term1);
+
+    printf("Enter terms (coefficient and exponent) \n");
+    for (i = 0; i < term1; i++) {
+        printf("Term %d: ", i + 1);
+        scanf("%d %d", &p1[i].coef, &p1[i].expo);
+    }
+
+
+    printf("\nEnter the number of terms in second polynomial: ");
+    scanf("%d", &term2);
+
+    printf("Enter terms (coefficient and exponent) in descending order of exponent:\n");
+    for (i = 0; i < term2; i++) {
+        printf("Term %d: ", i + 1);
+        scanf("%d %d", &p2[i].coef, &p2[i].expo);
+    }
+
+    // --- Add polynomials ---
+    i = j = k = 0;
+    while (i < term1 && j < term2) {
+        if (p1[i].expo == p2[j].expo) {
+            p3[k].coef = p1[i].coef + p2[j].coef;
+            p3[k].expo = p1[i].expo;
+            i++; j++; k++;
+        } else if (p1[i].expo > p2[j].expo) {
+            p3[k] = p1[i];
+            i++; k++;
+        } else {
+            p3[k] = p2[j];
+            j++; k++;
+        }
+    }
+
+
+    while (i < term1) {
+        p3[k] = p1[i];
+        i++; k++;
+    }
+
+
+    while (j < term2) {
+        p3[k] = p2[j];
+        j++; k++;
+    }
+
+
+    printf("\nResultant Polynomial: ");
+    for (i = 0; i < k; i++) {
+        printf("%dX^%d", p3[i].coef, p3[i].expo);
+        if (i < k - 1) {
+            printf(" + ");
+        }
+    }
+    printf("\n");
+
+    return 0;
+}
